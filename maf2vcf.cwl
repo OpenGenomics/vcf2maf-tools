@@ -4,7 +4,7 @@ class: CommandLineTool
 
 requirements:
     DockerRequirement:
-        dockerPull: maf2vcf
+        dockerPull: opengenomics/vcf1maf
         
 baseCommand: [ perl, /opt/vcf2maf/maf2vcf.pl, --output-dir, ./ ]
 
