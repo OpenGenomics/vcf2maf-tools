@@ -33,6 +33,7 @@ task vcf2maf {
 
         perl /home/vcf2maf.pl --input-vcf ${inputVCF} \
                               --output-maf ${outputFilePrefix}.maf \
+                              --vep-path /root/vep
                               --vep-data ${vepOfflineCacheDir} \
                               --ref-fasta ${refFasta} \
                               --species ${species} \
@@ -56,7 +57,7 @@ task vcf2maf {
     }
 
     runtime {
-        docker: "vcf2maf"
+        docker: "opengenomics/vcf2maf"
     }
 }
 

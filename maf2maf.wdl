@@ -53,7 +53,7 @@ task maf2maf {
     }
 
     runtime {
-        docker: "vcf2maf"
+        docker: "opengenomics/vcf2maf"
     }
 }
 
