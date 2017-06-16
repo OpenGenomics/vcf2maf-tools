@@ -31,41 +31,31 @@ inputs:
       prefix: "--input-vcf"
 
   outputMAF:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Path to output MAF file [Default: STDOUT]"
     inputBinding:
       prefix: "--output-maf"
 
   tumorID:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Tumor_Sample_Barcode to report in the MAF [TUMOR]"
     inputBinding:
       prefix: "--tumor-id"
 
   normalID:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Matched_Norm_Sample_Barcode to report in the MAF [NORMAL]"
     inputBinding:
       prefix: "---normal-id"
 
   vcfTumorID:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Tumor sample ID used in VCF's genotype column [Default: --tumor-id]"
     inputBinding:
       prefix: "--vcf-tumor-id"
 
   vcfNormalID:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Matched normal ID used in VCF's genotype column [Default: --normal-id]"
     inputBinding:
       prefix: "--vcf-normal-id"
@@ -77,9 +67,7 @@ inputs:
       prefix: "--vep-data"
 
   vepForks:
-    type: 
-      - "null"
-      - int
+    type: int?
     doc: "Number of forked processes to use when running VEP [4]"
     inputBinding:
       prefix: "--vep-forks"
@@ -91,59 +79,51 @@ inputs:
         prefix: "--ref-fasta"
   
   species:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Ensembl-friendly name of species (e.g. mus_musculus for mouse) [homo_sapiens]"
     inputBinding:
       prefix: "--species"
 
   ncbiBuild:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "NCBI reference assembly of variants MAF (e.g. GRCm38 for mouse) [GRCh37]"
     inputBinding:
       prefix: "--ncbi-build"
 
   cacheVersion:
-    type: 
-      - "null"
-      - int
+    type: int?
     doc: "Version of offline cache to use with VEP (e.g. 75, 82, 86) [Default: Installed version]"
     inputBinding:
       prefix: "--cache-version"
 
   mafCenter:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Variant calling center to report in MAF [.]"
     inputBinding:
       prefix: "--maf-center"
 
   retainInfo:
-    type: 
-      - "null"
-      - string[]
+    type: string[]?
     doc: "Comma-delimited names of INFO fields to retain as extra columns in MAF []"
     inputBinding:
       prefix: "--retain-info"
       itemSeparator: ","
       separate: false
 
+  customEnst:
+    type: File?
+    doc: "List of custom ENST IDs that override canonical selection"
+    inputBinding:
+      prefix: "--custom-enst"
+
   minHomVaf:
-    type: 
-      - "null"
-      - float
+    type: float?
     doc: "If GT undefined in VCF, minimum allele fraction to call a variant homozygous [0.7]"
     inputBinding:
       prefix: "--min-home-vaf"
 
   remapChain:
-    type: 
-      - "null"
-      - File
+    type: File?
     doc: "Chain file to remap variants to a different assembly before running VEP"
     inputBinding:
       prefix: "--remap-chain"

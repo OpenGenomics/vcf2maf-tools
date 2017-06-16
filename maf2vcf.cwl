@@ -24,9 +24,7 @@ inputs:
       prefix: "--input-maf"
 
   outputVCF:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Path to output multi-sample VCF containing all TN-pairs [<output-dir>/<input-maf-name>.vcf]"
     inputBinding:
       prefix: "--output-vcf"
@@ -44,49 +42,37 @@ inputs:
         prefix: "--per-tn-vcfs"
 
   tumDepthCol:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Name of MAF column for read depth in tumor BAM [t_depth]"
     inputBinding:
         prefix: "--tum-depth-col"
 
   tumRadCol:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Name of MAF column for reference allele depth in tumor BAM [t_ref_count]"
     inputBinding:
         prefix: "--tum-rad-col"
 
   tumVadCol:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Name of MAF column for variant allele depth in tumor BAM [t_alt_count]"
     inputBinding:
         prefix: "--tum-vad-col"
 
   nrmDepthCol:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Name of MAF column for read depth in normal BAM [n_depth]"
     inputBinding:
         prefix: "--nrm-depth-col"
 
   nrmRadCol:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Name of MAF column for reference allele depth in normal BAM [n_ref_count]"
     inputBinding:
         prefix: "--nrm-rad-col"
 
   nrmVadCol:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Name of MAF column for variant allele depth in normal BAM [n_alt_count]"
     inputBinding:
         prefix: "--nrm-vad-col"

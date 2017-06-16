@@ -23,48 +23,37 @@ inputs:
       prefix: "--input-vcf"
 
   outputVCF:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Path to output VCF file [Default: STDOUT]"
     inputBinding:
       prefix: "--output-vcf"
   
   newTumorID:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Tumor sample ID to use in the new VCF [Default: --vcf-tumor-id]"
     inputBinding:
       prefix: "--new-tumor-id"
 
   newNormalID:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Matched normal ID to use in the new VCF [Default: --vcf-normal-id]"
     inputBinding:
       prefix: "---new-normal-id"
 
   vcfTumorID:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Tumor sample ID used in VCF's genotype column [Default: TUMOR]"
     inputBinding:
       prefix: "--vcf-tumor-id"
 
   vcfNormalID:
-    type: 
-      - "null"
-      - string
+    type: string?
     doc: "Matched normal ID used in VCF's genotype column [Default: NORMAL]"
     inputBinding:
       prefix: "--vcf-normal-id"
 
   addFilters:
-    type: 
-      - boolean
+    type: boolean
     doc: "Use this to add some extra tags under FILTER [Default: 0]"
     inputBinding:
       prefix: "--add-filters"
