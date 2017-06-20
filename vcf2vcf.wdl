@@ -7,7 +7,7 @@ task vcf2vcf {
     String outputFilePrefix
 
     command {
-        perl /home/vcf2vcf.pl --input-vcf ${inputVCF} \
+        perl /opt/vcf2vcf.pl --input-vcf ${inputVCF} \
                               --output-vcf ${outputFilePrefix}.vcf \
                               ${"--tumor-id " + tumorId} \
                               ${"--normal-id " + normalId} \

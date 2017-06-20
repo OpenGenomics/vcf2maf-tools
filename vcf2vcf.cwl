@@ -13,7 +13,7 @@ requirements:
         
 baseCommand: 
   - "perl"
-  - "/opt/vcf2maf/vcf2vcf.pl"
+  - "/opt/vcf2vcf.pl"
 
 inputs:
   inputVCF:

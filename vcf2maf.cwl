@@ -15,7 +15,7 @@ requirements:
         
 baseCommand: 
   - "perl"
-  - "/opt/vcf2maf/vcf2maf.pl"
+  - "/opt/vcf2maf.pl"
 
 arguments:
   - "--tmp-dir"

@@ -2,41 +2,51 @@
 # Dockerfile
 #
 # Software:         vcf2maf
-# Software Version: 1.6.10
+# Software Version: 1.6.13
 # Description:      Convert a VCF into a MAF, where each variant is annotated 
 #                   to only one of all possible gene isoforms
 # Website:          https://github.com/mskcc/vcf2maf
-# Base Image:       opengenomics/variant-effect-predictor
-# Run Cmd:          docker run vcf2maf perl vcf2maf.pl --man
+# Base Image:       opengenomics/variant-effect-predictor-tool
+# Run Cmd:          docker run opengenomics/vcf2maf perl vcf2maf.pl --man
 #################################################################
-FROM opengenomics/variant-effect-predictor
+FROM opengenomics/variant-effect-predictor-tool
 
 MAINTAINER Adam Struck <strucka@ohsu.edu>
 
 USER root
 ENV VEP_PATH /root/vep
-ENV PATH $VEP_PATH/htslib:$VEP_PATH/samtools/bin:$PATH
+ENV PATH $VEP_PATH/htslib:$PATH
 ENV PERL5LIB $VEP_PATH:/opt/lib/perl5:$PERL5LIB
 
-# install htslib, samtools, and bcftools
-WORKDIR $VEP_PATH
+WORKDIR /tmp
 
-RUN mkdir $VEP_PATH/samtools && cd $VEP_PATH/samtools && \
-    curl -LOOO https://github.com/samtools/{samtools/releases/download/1.3.1/samtools-1.3.1,bcftools/releases/download/1.3.1/bcftools-1.3.1}.tar.bz2 && \
-    cat *tar.bz2 | tar -ijxf - &&\
-    cd samtools-1.3.1 && make && make prefix=$VEP_PATH/samtools install && cd .. && \
-    cd bcftools-1.3.1 && make && make prefix=$VEP_PATH/samtools install && cd .. && \
-    cd ..
+# install samtools
+RUN apt-get update && \
+    apt-get install --yes \
+    libncurses5-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN curl -L -o tmp.tar.gz https://github.com/samtools/samtools/releases/download/1.3.1/samtools-1.3.1.tar.bz2 && \
+    mkdir samtools && \
+    tar -C samtools --strip-components 1 -jxf tmp.tar.gz && \
+    cd samtools && \
+    ./configure && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf *
 
 # install liftOver
-RUN curl -L http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/liftOver > $VEP_PATH/samtools/bin/liftOver && \
-    chmod a+x $VEP_PATH/samtools/bin/liftOver
+RUN curl -L http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/liftOver > /usr/local/bin/liftOver && \
+    chmod a+x /usr/local/bin/liftOver
 
 # install vcf2maf
-WORKDIR /home/
+WORKDIR /opt/
 
-RUN curl -ksSL -o tmp.tar.gz https://github.com/mskcc/vcf2maf/archive/v1.6.10.tar.gz && \
+RUN curl -ksSL -o tmp.tar.gz https://github.com/mskcc/vcf2maf/archive/v1.6.13.tar.gz && \
     tar --strip-components 1 -zxf tmp.tar.gz && \
-    rm tmp.tar.gz
+    rm tmp.tar.gz && \
+    chmod +x *.pl
 
 CMD ["perl", "vcf2maf.pl", "--man"]

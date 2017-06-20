@@ -29,7 +29,7 @@ task maf2maf {
             RETAIN_COLS_FLAG=''
         fi
 
-        perl /home/maf2maf.pl --input-maf ${inputMAF} \
+        perl /opt/maf2maf.pl --input-maf ${inputMAF} \
                               --output-maf ${outputFilePrefix}.maf
                               --tmp-dir ${tmpDir} \
                               ${"--tum-depth-col " + tumDepthCol} \

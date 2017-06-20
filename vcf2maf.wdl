@@ -31,7 +31,7 @@ task vcf2maf {
            INFOCOLS=""
         fi
 
-        perl /home/vcf2maf.pl --input-vcf ${inputVCF} \
+        perl /opt/vcf2maf.pl --input-vcf ${inputVCF} \
                               --output-maf ${outputFilePrefix}.maf \
                               --vep-path /root/vep
                               --vep-data ${vepOfflineCacheDir} \

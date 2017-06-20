@@ -12,7 +12,7 @@ task maf2vcf {
     String outputFilePrefix
 
     command {
-        perl /home/maf2vcf.pl --input-maf ${inputMAF} \                           
+        perl /opt/maf2vcf.pl --input-maf ${inputMAF} \                           
                               --ref-fasta ${refFasta} \
                               ${"--tum-depth-col " + tumDepthCol} \
                               ${"--tum-rad-col " + tumRadCol} \

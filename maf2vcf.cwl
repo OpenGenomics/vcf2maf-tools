@@ -10,7 +10,7 @@ requirements:
         
 baseCommand: 
   - "perl"
-  - "/opt/vcf2maf/maf2vcf.pl"
+  - "/opt/maf2vcf.pl"
 
 arguments:
   - "--output-dir"
