@@ -13,8 +13,6 @@ FROM opengenomics/variant-effect-predictor-tool
 
 MAINTAINER Adam Struck <strucka@ohsu.edu>
 
-USER root
-ENV VEP_PATH /root/vep
 ENV PATH $VEP_PATH/htslib:$PATH
 ENV PERL5LIB $VEP_PATH:/opt/lib/perl5:$PERL5LIB
 
