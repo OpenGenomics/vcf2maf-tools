@@ -100,6 +100,9 @@ inputs:
 
   refFasta:
     type: File
+    secondaryFiles:
+      - .fai
+      - .gzi
     doc: "Path to reference Fasta file"
     inputBinding:
         prefix: "--ref-fasta"
