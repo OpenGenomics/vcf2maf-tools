@@ -17,7 +17,7 @@ arguments:
   - "--tmp-dir"
   - "."
   - "--vep-path"
-  - "/root/vep"
+  - "/home/vep"
 
 inputs:
   inputMAF:
