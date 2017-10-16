@@ -91,6 +91,7 @@ inputs:
     doc: "VEP's base cache/plugin directory"
     inputBinding:
       prefix: "--vep-data"
+      valueFrom: $(inputs.vepData.dirname)
 
   vepForks:
     type: int?
