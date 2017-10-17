@@ -17,7 +17,7 @@ arguments:
   - "--tmp-dir"
   - "."
   - "--vep-path"
-  - "/root/vep"
+  - "/home/vep"
 
 inputs:
   inputMAF:
@@ -91,6 +91,7 @@ inputs:
     doc: "VEP's base cache/plugin directory"
     inputBinding:
       prefix: "--vep-data"
+      valueFrom: $(inputs.vepData.dirname)
 
   vepForks:
     type: int?
@@ -100,6 +101,9 @@ inputs:
 
   refFasta:
     type: File
+    secondaryFiles:
+      - .fai
+      - .gzi
     doc: "Path to reference Fasta file"
     inputBinding:
         prefix: "--ref-fasta"

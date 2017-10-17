@@ -34,6 +34,9 @@ inputs:
     doc: "Path to reference Fasta file"
     inputBinding:
         prefix: "--ref-fasta"
+    secondaryFiles:
+      - .fai
+      - .gzi
   
   perTnVcfs:
     type: boolean
