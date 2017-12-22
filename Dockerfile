@@ -21,7 +21,7 @@ WORKDIR /tmp
 # install samtools
 RUN apt-get update && \
     apt-get install --yes \
-    libncurses5-dev && \
+    libncurses5-dev vcftools && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -30,6 +30,15 @@ RUN curl -L -o tmp.tar.gz https://github.com/samtools/samtools/releases/download
     tar -C samtools --strip-components 1 -jxf tmp.tar.gz && \
     cd samtools && \
     ./configure && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf *
+
+RUN curl -L -o tmp2.tar.gz https://github.com/samtools/bcftools/releases/download/1.3.1/bcftools-1.3.1.tar.bz2 && \
+    mkdir bcftools && \
+    tar -C bcftools --strip-components 1 -jxf tmp2.tar.gz && \
+    cd bcftools && \
     make && \
     make install && \
     cd .. && \

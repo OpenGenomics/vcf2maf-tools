@@ -10,9 +10,10 @@ doc: |
   all possible genes and transcripts. For more info, see the README.
 
 requirements:
-  DockerRequirement:
+  - class: DockerRequirement
     dockerPull: "opengenomics/vcf2maf"
-        
+  - class: InlineJavascriptRequirement
+
 baseCommand: 
   - "perl"
   - "/opt/vcf2maf.pl"
@@ -22,6 +23,8 @@ arguments:
   - "."
   - "--vep-path"
   - "/home/vep"
+  - "--filter-vcf"
+  - $(inputs.vepData.path + "/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz")
 
 inputs:
   inputVCF:
@@ -31,7 +34,8 @@ inputs:
       prefix: "--input-vcf"
 
   outputMAF:
-    type: string?
+    type: string
+    default: vep.maf
     doc: "Path to output MAF file [Default: STDOUT]"
     inputBinding:
       prefix: "--output-maf"
@@ -46,7 +50,7 @@ inputs:
     type: string?
     doc: "Matched_Norm_Sample_Barcode to report in the MAF [NORMAL]"
     inputBinding:
-      prefix: "---normal-id"
+      prefix: "--normal-id"
 
   vcfTumorID:
     type: string?
@@ -65,7 +69,6 @@ inputs:
     doc: "VEP's base cache/plugin directory"
     inputBinding:
       prefix: "--vep-data"
-      valueFrom: $(inputs.vepData.dirname)
 
   vepForks:
     type: int?
@@ -112,7 +115,7 @@ inputs:
     inputBinding:
       prefix: "--retain-info"
       itemSeparator: ","
-      separate: false
+      #separate: false
 
   customEnst:
     type: File?
@@ -137,7 +140,7 @@ outputs:
     type: File
     outputBinding:
       glob: $(inputs.outputMAF)
-  tmpvcf:
+  vepvcf:
     type: File
     outputBinding:
       glob: $(inputs.inputVCF.nameroot + ".vep.vcf")

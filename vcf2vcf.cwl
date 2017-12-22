@@ -23,10 +23,20 @@ inputs:
       prefix: "--input-vcf"
 
   outputVCF:
-    type: string?
+    type: string
+    default: vep.vcf
     doc: "Path to output VCF file [Default: STDOUT]"
     inputBinding:
       prefix: "--output-vcf"
+
+  refFasta:
+    type: File
+    doc: "Path to reference Fasta file"
+    inputBinding:
+      prefix: "--ref-fasta"
+    secondaryFiles:
+      - .fai
+      - .gzi
   
   newTumorID:
     type: string?
