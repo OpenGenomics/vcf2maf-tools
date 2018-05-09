@@ -54,6 +54,6 @@ WORKDIR /opt/
 RUN curl -ksSL -o tmp.tar.gz https://github.com/mskcc/vcf2maf/archive/v1.6.13.tar.gz && \
     tar --strip-components 1 -zxf tmp.tar.gz && \
     rm tmp.tar.gz && \
-    chmod +x *.pl
+    chmod 755 *.pl
 
 CMD ["perl", "vcf2maf.pl", "--man"]
