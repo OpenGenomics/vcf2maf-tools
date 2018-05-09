@@ -24,7 +24,7 @@ arguments:
   - "--vep-path"
   - "/home/vep"
   - "--filter-vcf"
-  - $(inputs.vepData.path + "/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz")
+  - $(inputs.vepData.path)/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz
 
 inputs:
   inputVCF:
@@ -135,6 +135,12 @@ inputs:
     inputBinding:
       prefix: "--remap-chain"
 
+  bufferSize:
+    type: int?
+    default: 4000
+    inputBinding: 
+      prefix: "--buffer-size"
+
 outputs:
   maf:
     type: File
@@ -143,4 +149,4 @@ outputs:
   vepvcf:
     type: File
     outputBinding:
-      glob: $(inputs.inputVCF.nameroot + ".vep.vcf")
+      glob: $(inputs.inputVCF.nameroot).vep.vcf

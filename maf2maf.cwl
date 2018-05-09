@@ -126,6 +126,12 @@ inputs:
     inputBinding:
       prefix: "--cache-version"
 
+  bufferSize:
+    type: int?
+    default: 4000
+    inputBinding:
+      prefix: "--buffer-size"
+
 outputs:
   maf:
     type: File
