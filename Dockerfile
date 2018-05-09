@@ -5,7 +5,7 @@
 # Software Version: 1.6.13
 # Description:      Convert a VCF into a MAF, where each variant is annotated 
 #                   to only one of all possible gene isoforms
-# Website:          https://github.com/mskcc/vcf2maf
+# Website:          https://github.com/OpenGenomics/vcft2maf-tools
 # Base Image:       opengenomics/variant-effect-predictor-tool
 # Run Cmd:          docker run opengenomics/vcf2maf perl vcf2maf.pl --man
 #################################################################
