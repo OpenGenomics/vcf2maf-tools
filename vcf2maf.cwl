@@ -115,7 +115,6 @@ inputs:
     inputBinding:
       prefix: "--retain-info"
       itemSeparator: ","
-      #separate: false
 
   customEnst:
     type: File?

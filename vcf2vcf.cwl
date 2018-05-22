@@ -8,7 +8,7 @@ doc: |
   to add more tags under FILTER.
 
 requirements:
-  DockerRequirement:
+  - class: DockerRequirement
     dockerPull: "opengenomics/vcf2maf"
         
 baseCommand: 
@@ -48,7 +48,7 @@ inputs:
     type: string?
     doc: "Matched normal ID to use in the new VCF [Default: --vcf-normal-id]"
     inputBinding:
-      prefix: "---new-normal-id"
+      prefix: "--new-normal-id"
 
   vcfTumorID:
     type: string?
@@ -65,6 +65,7 @@ inputs:
   addFilters:
     type: boolean
     doc: "Use this to add some extra tags under FILTER [Default: 0]"
+    default: false
     inputBinding:
       prefix: "--add-filters"
 
