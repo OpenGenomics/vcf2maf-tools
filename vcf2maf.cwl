@@ -42,25 +42,25 @@ inputs:
 
   tumorID:
     type: string?
-    doc: "Tumor_Sample_Barcode to report in the MAF [TUMOR]"
+    doc: "Tumor_Sample_Barcode to report in the MAF"
     inputBinding:
       prefix: "--tumor-id"
 
   normalID:
     type: string?
-    doc: "Matched_Norm_Sample_Barcode to report in the MAF [NORMAL]"
+    doc: "Matched_Norm_Sample_Barcode to report in the MAF"
     inputBinding:
       prefix: "--normal-id"
 
   vcfTumorID:
     type: string?
-    doc: "Tumor sample ID used in VCF's genotype column [Default: --tumor-id]"
+    doc: "Tumor sample ID used in VCF's genotype column [Default: TUMOR]"
     inputBinding:
       prefix: "--vcf-tumor-id"
 
   vcfNormalID:
     type: string?
-    doc: "Matched normal ID used in VCF's genotype column [Default: --normal-id]"
+    doc: "Matched normal ID used in VCF's genotype column [Default: NORMAL]"
     inputBinding:
       prefix: "--vcf-normal-id"
 
