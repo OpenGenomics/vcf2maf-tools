@@ -82,6 +82,10 @@ inputs:
 
 outputs:
   vcf:
+    type: File[]
+    outputBinding:
+      glob: "*.vcf"
+  skipped:
     type: File
     outputBinding:
-      glob: $(inputs.outputVCF)
+      glob: "*.skipped.tsv"
