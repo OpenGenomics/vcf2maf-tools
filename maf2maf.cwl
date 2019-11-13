@@ -8,6 +8,7 @@ doc: |
 requirements:
   DockerRequirement:
     dockerPull: "opengenomics/vcf2maf"
+  InlineJavascriptRequirement: {}
         
 baseCommand: 
   - "perl"
@@ -18,6 +19,8 @@ arguments:
   - "."
   - "--vep-path"
   - "/home/vep"
+  - "--filter-vcf"
+  - $(inputs.vepData.path)/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz
 
 inputs:
   inputMAF:
@@ -91,7 +94,7 @@ inputs:
     doc: "VEP's base cache/plugin directory"
     inputBinding:
       prefix: "--vep-data"
-      valueFrom: $(inputs.vepData.dirname)
+      valueFrom: $(inputs.vepData.path)
 
   vepForks:
     type: int?
