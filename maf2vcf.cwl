@@ -1,14 +1,14 @@
 cwlVersion: v1.0
 class: CommandLineTool
 doc: |
-  This script breaks down variants in a MAF into a multi-sample VCF, in 
+  This script breaks down variants in a MAF into a multi-sample VCF, in
   preparation for annotation with VEP. Can also create VCFs per-TN pair.
 
 requirements:
   DockerRequirement:
     dockerPull: "opengenomics/vcf2maf"
-        
-baseCommand: 
+
+baseCommand:
   - "perl"
   - "/opt/maf2vcf.pl"
 
@@ -37,9 +37,9 @@ inputs:
     secondaryFiles:
       - .fai
       - .gzi
-  
+
   perTnVcfs:
-    type: boolean
+    type: boolean?
     doc: "Specify this to generate VCFs per-TN pair, in addition to the multi-sample VCF"
     inputBinding:
         prefix: "--per-tn-vcfs"
@@ -82,6 +82,10 @@ inputs:
 
 outputs:
   vcf:
+    type: File[]
+    outputBinding:
+      glob: "*.vcf"
+  skipped:
     type: File
     outputBinding:
-      glob: $(inputs.outputVCF)
+      glob: "*.skipped.tsv"
